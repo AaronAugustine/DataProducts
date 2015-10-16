@@ -1,0 +1,49 @@
+Calculate Pace, MPH, and Splits
+========================================================
+author: Aaron Augustine
+date: 10/15/2015
+
+What the application Does and why is it important?
+========================================================
+
+This app was created as a way to calculate Pace, MPH and mile splits based on time for running a marathon (26.2 miles).
+
+Using slider bar inputs it allows users to adjust the time to see how it impacts the their pace.  This is important when developing a race plan and pacing yourself.
+
+What are the inputs?
+========================================================
+The inputs to the app are:
+- Race Start Time
+- Run time entered as Hours, Minutes and Seconds
+
+How the calculations works?
+========================================================
+The code takes the start time and race time and calculates the rate.  
+It then uses the rate to drive the splits from start time.
+```{r}
+    library(chron)
+    dist<-26.2
+    start<-times("7:00:00")
+    time_string<-c("4:0:0")
+    total_time<-times(time_string)
+    rate<-as.numeric(total_time/dist)
+    clock_time<-start
+    time<-times(0)
+```
+
+Results (Sample)
+========================================================
+```{r, echo=FALSE}
+    cat(paste("Race Start Time", start),"\n") 
+    cat(paste("Race End Time  ", start+total_time),"\n")
+    cat(paste("Running Time   ", total_time),"\n")
+    cat(paste("Pace           ", times(rate)),"\n")
+    cat(paste("MPH            ",format(as.numeric(dist/total_time/24),
+                                       digits = 5)),"\n")
+    for (i in 1:3){
+      clock_time<-clock_time+rate 
+      time<-time+rate
+      results<-paste("Mile",format(i,digits = 2),clock_time,time)
+      cat(results,"\n")
+    }
+```
