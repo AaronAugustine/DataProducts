@@ -3,7 +3,7 @@ Calculate Pace, MPH, and Splits
 author: Aaron Augustine
 date: 10/15/2015
 
-What the application Does and why is it important?
+What the application does and why is it important?
 ========================================================
 
 This app was created as a way to calculate Pace, MPH and mile splits based on time for running a marathon (26.2 miles).
@@ -18,7 +18,7 @@ The inputs to the app are:
 
 How the calculations works?
 ========================================================
-The code takes the start time and race time and calculates the rate.  
+The code takes the distance and race time and calculates the rate.  
 It then uses the rate to drive the splits from start time.
 ```{r}
     library(chron)
@@ -33,7 +33,7 @@ It then uses the rate to drive the splits from start time.
 
 Results (Sample)
 ========================================================
-```{r, echo=FALSE}
+```{r echo=FALSE}
     cat(paste("Race Start Time", start),"\n") 
     cat(paste("Race End Time  ", start+total_time),"\n")
     cat(paste("Running Time   ", total_time),"\n")
